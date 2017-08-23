@@ -1,7 +1,7 @@
 var lab = lab || {};
 
-lab.glProgram = (function() {
-    
+lab.glProgram = (function () {
+
     var self = {};
 
     var program = null;
@@ -19,7 +19,7 @@ lab.glProgram = (function() {
             return null;
         }
         console.debug('Found shader with id ' + id);
-  
+
         var str = "";
         var k = shaderScript.firstChild;
         while (k) {
@@ -27,7 +27,7 @@ lab.glProgram = (function() {
                 str += k.textContent;
             k = k.nextSibling;
         }
-  
+
         var shader;
         if (shaderScript.type == "x-shader/x-fragment") {
             shader = gl.createShader(gl.FRAGMENT_SHADER);
@@ -36,15 +36,15 @@ lab.glProgram = (function() {
         } else {
             return null;
         }
-  
+
         gl.shaderSource(shader, str);
         gl.compileShader(shader);
-  
+
         if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
             console.error(gl.getShaderInfoLog(shader));
             return null;
         }
-  
+
         return shader;
     }
 
@@ -54,7 +54,7 @@ lab.glProgram = (function() {
      * Setups the shading languages and compiles them into a program
      * @returns undefined
      */
-    self.init = function(vertexShader, fragmentShader) {
+    self.init = function (vertexShader, fragmentShader) {
         console.debug('glProgram initialised');
         var vShader = getShader(gl, 'vertexShader'),
             fShader = getShader(gl, 'fragShader');
