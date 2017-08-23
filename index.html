@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lab One WebGl</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        canvas {
+            width: 500px;
+            height: 500px;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/glmatrix/2.2.1/gl-matrix.js"></script>
+</head>
+<body>
+    <script type="x-shader/x-vertex" id="vertexShader">
+        attribute vec2 a_position;
+        
+        void main() {
+            gl_Position = vec4(a_position, 0, 1);
+        }
+    </script>
+        
+    <script type="x-shader/x-fragment" id="fragShader">
+        void main() {
+            gl_FragColor = vec4(1,0,0,1);  // green
+        }
+    </script>
+    <canvas></canvas>
+    
+    <!-- Load in the applications -->
+    <script src="glProgram.js"></script>
+    <script src="shape.js"></script>
+    <script src="app.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
